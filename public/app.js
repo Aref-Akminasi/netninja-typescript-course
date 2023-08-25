@@ -1,9 +1,19 @@
 "use strict";
-//const anchor = document.querySelector('a')!;
-//console.log(anchor.href);
-//const form = document.querySelector('form')!;
+// classes
+class Invoice {
+    constructor(c, d, a) {
+        this.client = c;
+        this.details = d;
+        this.amount = a;
+    }
+    format() {
+        return `${this.client} owes £${this.amount} for ${this.details}`;
+    }
+}
+const invOne = new Invoice('Aref', 'Freelance', 200);
+const invTwo = new Invoice('Mario', 'Work', 100);
+let invoices = [];
 const form = document.querySelector('.new-item-form');
-//console.log(form.children);
 // inputs
 const type = document.querySelector('#type');
 const tofrom = document.querySelector('#tofrom');
