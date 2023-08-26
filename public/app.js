@@ -1,8 +1,6 @@
 import { ListTemplate } from './classes/ListTemplate.js';
 import { Invoice } from './classes/invoice.js';
 import { Payment } from './classes/payment.js';
-let docOne;
-let docTwo;
 const form = document.querySelector('.new-item-form');
 // inputs
 const type = document.querySelector('#type');
@@ -23,3 +21,21 @@ form.addEventListener('submit', (e) => {
     }
     list.render(doc, type.value, 'end');
 });
+// Generics
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let docOne = addUID({ name: 'yoshi', age: 40 });
+console.log(docOne.age);
+const docThree = {
+    uid: 1,
+    resourceName: 'person',
+    data: 'shaun',
+};
+const docFour = {
+    uid: 2,
+    resourceName: 'shoppingList',
+    data: ['test', 'fruit'],
+};
+console.log(docThree, docFour);
