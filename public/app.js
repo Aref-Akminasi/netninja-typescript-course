@@ -1,3 +1,18 @@
+const me = {
+    name: 'aref',
+    age: 23,
+    speak(text) {
+        console.log(text);
+    },
+    spend(amount) {
+        console.log('I spent', amount);
+        return amount;
+    },
+};
+const greetPerson = (person) => {
+    console.log('hello', person.name);
+};
+greetPerson(me);
 import { Invoice } from './classes/invoice.js';
 const invOne = new Invoice('Aref', 'Freelance', 200);
 const invTwo = new Invoice('Mario', 'Work', 100);
@@ -5,7 +20,7 @@ let invoices = [];
 invoices.push(invOne);
 invoices.push(invTwo);
 invoices.forEach((inv) => {
-    console.log(inv.client, inv.amount, inv.format());
+    //console.log(inv.client, inv.amount, inv.format());
 });
 const form = document.querySelector('.new-item-form');
 // inputs
