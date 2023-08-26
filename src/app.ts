@@ -25,13 +25,40 @@ const list = new ListTemplate(ul);
 
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault();
-  let values: [string, string, number];
-  values = [tofrom.value, details.value, amount.valueAsNumber];
   let doc: HasFormatter;
   if (type.value == 'invoice') {
-    doc = new Invoice(...values);
+    doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
   } else {
-    doc = new Payment(...values);
+    doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
   }
   list.render(doc, type.value, 'end');
 });
+
+// ENUMS
+enum resourceType {
+  BOOK,
+  AUTHOR,
+  FILM,
+  DIRECTOR,
+  PERSON,
+}
+
+interface Resource<T> {
+  uid: number;
+  resourceType: number;
+  data: T;
+}
+
+const docOne: Resource<object> = {
+  uid: 1,
+  resourceType: resourceType.AUTHOR,
+  data: { title: 'name of the wind' },
+};
+
+const docTwo: Resource<object> = {
+  uid: 10,
+  resourceType: resourceType.BOOK,
+  data: { name: 'yoshi' },
+};
+
+console.log(docOne, docTwo);
